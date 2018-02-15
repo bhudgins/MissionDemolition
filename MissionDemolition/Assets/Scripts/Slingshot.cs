@@ -17,6 +17,8 @@ public class Slingshot : MonoBehaviour {
 	public GameObject projectile;
 	public bool aimingMode;
 
+	private bool canShoot = true;
+
 	private LineRenderer slingLine;
 	private Rigidbody projectileRigidbody;
 
@@ -53,15 +55,16 @@ public class Slingshot : MonoBehaviour {
 
 	void OnMouseDown() {
 
+		if (canShoot) {
+			aimingMode = true;
 
-		aimingMode = true;
+			projectile = Instantiate (prefabProjectile) as GameObject;
 
-		projectile = Instantiate (prefabProjectile) as GameObject;
+			projectile.transform.position = launchPos;
 
-		projectile.transform.position = launchPos;
-
-		projectileRigidbody = projectile.GetComponent<Rigidbody> ();
-		projectileRigidbody.isKinematic = true;
+			projectileRigidbody = projectile.GetComponent<Rigidbody> ();
+			projectileRigidbody.isKinematic = true;
+		}
 	}
 
 	void Update()
@@ -88,7 +91,8 @@ public class Slingshot : MonoBehaviour {
 
 		slingLine.enabled = true;
 
-		if(Input.GetMouseButtonUp(0)){
+		if(Input.GetMouseButtonUp(0) && canShoot){
+			canShoot = false;
 			aimingMode = false;
 			projectileRigidbody.isKinematic = false;
 			projectileRigidbody.velocity = -mouseDelta * velocityMult;
@@ -99,10 +103,15 @@ public class Slingshot : MonoBehaviour {
 			ProjectileLine.S.poi = projectile;
 
 			slingLine.enabled = false;
+			Invoke ("turnOnShoot", 3f);
 
 		}
 
 
 	}
 		
+	void turnOnShoot()
+	{
+		canShoot = true;
+	}
 }
