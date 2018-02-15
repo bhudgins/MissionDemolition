@@ -5,7 +5,7 @@ using UnityEngine;
 public class RigidBodySleep : MonoBehaviour {
 
 	void Start(){
-		RigidBody rb = GetComponent<Rigidbody>();
+		Rigidbody rb = GetComponent<Rigidbody>();
 		if(rb != null) rb.Sleep();
 	}
 }
