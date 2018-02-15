@@ -17,6 +17,7 @@ public class Slingshot : MonoBehaviour {
 	public GameObject projectile;
 	public bool aimingMode;
 
+	private LineRenderer slingLine;
 	private Rigidbody projectileRigidbody;
 
 	static public Vector3 LAUNCH_POS{
@@ -34,6 +35,8 @@ public class Slingshot : MonoBehaviour {
 		launchPoint = launchPointTrans.gameObject;
 		launchPoint.SetActive (false);
 		launchPos = launchPointTrans.position;
+		slingLine = GetComponent<LineRenderer> ();
+		slingLine.enabled = false;
 	}
 
 	// Use this for initialization
@@ -49,6 +52,8 @@ public class Slingshot : MonoBehaviour {
 	}
 
 	void OnMouseDown() {
+
+
 		aimingMode = true;
 
 		projectile = Instantiate (prefabProjectile) as GameObject;
@@ -78,6 +83,11 @@ public class Slingshot : MonoBehaviour {
 		Vector3 projPos = launchPos + mouseDelta;
 		projectile.transform.position = projPos;
 
+		slingLine.SetPosition (0, launchPos);
+		slingLine.SetPosition (1, projPos);
+
+		slingLine.enabled = true;
+
 		if(Input.GetMouseButtonUp(0)){
 			aimingMode = false;
 			projectileRigidbody.isKinematic = false;
@@ -87,8 +97,10 @@ public class Slingshot : MonoBehaviour {
 
 			MissionDemolition.ShotFired ();
 			ProjectileLine.S.poi = projectile;
+
 		}
 
 
 	}
+		
 }
