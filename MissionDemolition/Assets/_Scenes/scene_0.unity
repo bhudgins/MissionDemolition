@@ -322,6 +322,34 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 228846140}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &333557167
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 333557168}
+  m_Layer: 0
+  m_Name: ViewBoth
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &333557168
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 333557167}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 25, y: 25, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &402603614
 GameObject:
   m_ObjectHideFlags: 0
@@ -728,7 +756,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1237189188}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1651859624}
+        m_MethodName: SwitchView
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1237189188
@@ -966,6 +1005,7 @@ GameObject:
   - component: {fileID: 1651859618}
   - component: {fileID: 1651859622}
   - component: {fileID: 1651859623}
+  - component: {fileID: 1651859624}
   m_Layer: 0
   m_Name: _MainCamera
   m_TagString: MainCamera
@@ -1069,6 +1109,32 @@ MonoBehaviour:
   cloudScaleMin: 1
   cloudScaleMax: 3
   cloudSpeedMult: 0.5
+--- !u!114 &1651859624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1651859617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ec2f2ac57395a44bb5b53cafb176539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uitLevel: {fileID: 208734306}
+  uitShots: {fileID: 402603616}
+  uitButton: {fileID: 2088369169}
+  castlePos: {x: 50, y: -9.5, z: 0}
+  castles:
+  - {fileID: 1493311134748124, guid: 3f3fb6ba043b10045bf9ac2e4c95d666, type: 2}
+  - {fileID: 1493311134748124, guid: 7ab41b6babe1c9c44ac70605505e15e7, type: 2}
+  - {fileID: 1493311134748124, guid: a50201c3760f27a46bcf89b042d38041, type: 2}
+  - {fileID: 1493311134748124, guid: 5c496f00a2b826944aee9332fa1794f6, type: 2}
+  level: 0
+  levelMax: 0
+  shotsTaken: 0
+  castle: {fileID: 0}
+  mode: 0
+  showing: Show Slingshot
 --- !u!1 &1824579883
 GameObject:
   m_ObjectHideFlags: 0
