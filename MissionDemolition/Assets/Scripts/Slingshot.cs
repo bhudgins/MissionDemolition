@@ -98,6 +98,8 @@ public class Slingshot : MonoBehaviour {
 			MissionDemolition.ShotFired ();
 			ProjectileLine.S.poi = projectile;
 
+			slingLine.enabled = false;
+
 		}
 
 
